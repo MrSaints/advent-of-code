@@ -34,7 +34,7 @@ module Day_03
     class Santa
         getter instructions
 
-        def initialize (instructions : String)
+        def initialize(instructions : String)
             @instructions = instructions.chars
             @gps = GPS.new +0, +0
         end
