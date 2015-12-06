@@ -1,5 +1,5 @@
 module Day_02
-    class GPS
+    struct GPS
         getter x, y, history
 
         def initialize(@x : Number, @y : Number)
@@ -24,6 +24,10 @@ module Day_02
 
         def snapshot
             @history << [@x, @y]
+        end
+
+        def unique_coordinates : Array(Array(Int32 | Int32))
+            @history.uniq
         end
     end
 end
