@@ -1,4 +1,4 @@
-module Day_02
+module Day_03
     struct GPS
         getter x, y, history
 
