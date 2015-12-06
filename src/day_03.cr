@@ -1,5 +1,5 @@
 module Day_02
-    struct Santa_GPS
+    struct GPS
         getter x, y
 
         def initialize(@x : Number, @y : Number)
