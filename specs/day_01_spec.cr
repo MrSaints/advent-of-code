@@ -6,19 +6,23 @@ require "../src/day_01"
 
 describe "Day_01" do
     describe "initialize" do
-        day_01 = Day_01.new +1
-        day_01.floor.should eq +1
+        it "should set the floor to +1" do
+            day_01 = Day_01.new +1
+            day_01.floor.should eq +1
+        end
     end
 
     describe "floor" do
-        day_01 = Day_01.new +0
-        day_01.floor.should eq +0
-        day_01.floor = +2
-        day_01.floor.should eq +2
+        it "should change the floor to +2" do
+            day_01 = Day_01.new +0
+            day_01.floor.should eq +0
+            day_01.floor = +2
+            day_01.floor.should eq +2
+        end
     end
 
     describe "up" do
-        it "should go up 1 floor" do
+        it "should go up +1 floor" do
             day_01 = Day_01.new +0
             day_01.up
             day_01.floor.should eq +1
@@ -26,7 +30,7 @@ describe "Day_01" do
     end
 
     describe "down" do
-        it "should go down 1 floor" do
+        it "should go down -1 floor" do
             day_01 = Day_01.new +0
             day_01.down
             day_01.floor.should eq -1
@@ -34,7 +38,7 @@ describe "Day_01" do
     end
 
     describe "parse" do
-        it "should be on floor 0" do
+        it "should be on floor +0" do
             day_01 = Day_01.new +0
             day_01.process "(())"
             day_01.floor.should eq +0
@@ -43,7 +47,7 @@ describe "Day_01" do
             day_01.floor.should eq +0
         end
 
-        it "should be on floor 3" do
+        it "should be on floor +3" do
             day_01 = Day_01.new +0
             day_01.process "((("
             day_01.floor.should eq +3
