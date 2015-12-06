@@ -45,5 +45,17 @@ describe "Day_02" do
                 gps.y.should eq +1
             end
         end
+
+        describe "snapshot" do
+            it "should record the current coordinates to a history array" do
+                gps = Day_02::GPS.new +0, +0
+                gps.snapshot
+                gps.history.should eq [[+0, +0]]
+                gps.move_east
+                gps.move_west
+                gps.snapshot
+                gps.history.should.eq [[+0, +0], [+1, +1]]
+            end
+        end
     end
 end
