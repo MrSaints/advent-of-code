@@ -1,4 +1,3 @@
-# TODO: Refactor (add presents to class? per present methods?)
 struct Paper
     getter l, w, h
 
