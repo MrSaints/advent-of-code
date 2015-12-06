@@ -40,7 +40,7 @@ describe "Santa_GPS" do
     describe "move_east" do
         it "should move the current coordinates East to give +0, +1" do
             gps = Santa_GPS.new +0, +0
-            gps.move_west
+            gps.move_east
             gps.y.should eq +1
         end
     end
