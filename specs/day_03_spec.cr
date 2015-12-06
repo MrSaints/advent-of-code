@@ -103,4 +103,13 @@ describe "Day_03" do
             end
         end
     end
+
+    describe "answer" do
+        it "part 01 should be +2572" do
+            instructions = File.read("./data/day_03.txt")
+            day_03 = Day_03::Santa.new instructions
+            day_03.deliver
+            day_03.houses.should eq +2572
+        end
+    end
 end
