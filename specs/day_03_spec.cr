@@ -82,5 +82,13 @@ describe "Day_03" do
                 santa.instructions.should eq ['^','v','^','v','^','v','^','v','^','v']
             end
         end
+
+        describe "deliver" do
+            it "should deliver presents to +2 houses" do
+                santa = Day_03::Santa.new ">"
+                santa.deliver
+                santa.delivered.should eq +2
+            end
+        end
     end
 end
