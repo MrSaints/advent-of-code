@@ -78,7 +78,16 @@ describe "Day_01" do
         end
     end
 
-    describe "basement" do
+    describe "entered_basement" do
+        it "should be immutable" do
+            day_01 = Day_01.new +0
+            day_01.entered_basement +2
+            day_01.basement.should eq +3
+
+            day_01.entered_basement +4
+            day_01.basement.should eq +3
+        end
+
         it "should be on position +1" do
             day_01 = Day_01.new +0
             day_01.process ")"

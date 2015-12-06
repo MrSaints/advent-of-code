@@ -13,6 +13,10 @@ class Day_01
         @floor -= 1
     end
 
+    def entered_basement(index : Number)
+        @basement ||= index + 1
+    end
+
     def process(instructions : String)
         index = 0
         while index < instructions.size
@@ -23,7 +27,7 @@ class Day_01
             end
 
             if @floor == -1
-                @basement ||= index + 1
+                entered_basement index
             end
 
             index += 1
