@@ -83,8 +83,8 @@ describe "Day_03" do
             end
 
             it "should enumerate every other (even) instruction" do
-                santa = Day_03::Santa.new "^v^v^v^v^v", 2
-                santa.instructions.should eq ['^','^','^','^','^']
+                santa = Day_03::Santa.new "^v^v^v^v^v", +2
+                santa.instructions.should eq ['v','v','v','v','v']
             end
         end
 

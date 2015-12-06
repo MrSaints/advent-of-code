@@ -34,8 +34,16 @@ module Day_03
     class Santa
         getter instructions
 
-        def initialize(instructions : String)
+        def initialize(instructions : String, ignore = +1 : Number)
             @instructions = instructions.chars
+            if ignore != +1
+                index = +0
+                @instructions = @instructions.select do |i|
+                    index += +1
+                    index % 2 == +0
+                end
+            end
+
             @gps = GPS.new +0, +0
         end
 
