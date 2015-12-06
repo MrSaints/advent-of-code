@@ -30,4 +30,12 @@ module Day_03
             @history.uniq
         end
     end
+
+    class Santa
+        getter instructions
+
+        def initialize (instructions : String)
+            @instructions = instructions.chars
+        end
+    end
 end
