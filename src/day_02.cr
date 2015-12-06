@@ -7,4 +7,8 @@ class Day_02
     def smallest_side(surface_area : Array)
         surface_area.min / 2
     end
+
+    def paper_needed(lwh : String)
+        0
+    end
 end
