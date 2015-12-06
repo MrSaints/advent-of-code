@@ -37,7 +37,7 @@ describe "Day_01" do
         end
     end
 
-    describe "parse" do
+    describe "process" do
         it "should be on floor +0" do
             day_01 = Day_01.new +0
             day_01.process "(())"

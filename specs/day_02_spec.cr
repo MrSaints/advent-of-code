@@ -38,4 +38,13 @@ describe "Day_02" do
             day_02.paper_needed("1x1x10").should eq +43
         end
     end
+
+    describe "process" do
+        it "should return the total square feet of paper needed for all presents" do
+            test_data = "2x3x4\n1x1x10"
+            day_02 = Day_02.new
+            total_needed = day_02.process test_data
+            total_needed.should eq 101
+        end
+    end
 end

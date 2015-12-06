@@ -1,3 +1,4 @@
+# TODO: Refactor (add presents to class? per present methods?)
 class Day_02
     def calculate_surface_area(lwh : String) : Array
         l, w, h = lwh.split('x').map { |d| d.to_i }
@@ -13,5 +14,9 @@ class Day_02
         extra_paper = smallest_side surface_area
         total = surface_area.sum(+0) + extra_paper
         total
+    end
+
+    def process(presents : String) : Number
+        0
     end
 end
