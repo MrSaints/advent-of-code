@@ -1,8 +1,9 @@
 module Day_02
-    struct GPS
-        getter x, y
+    class GPS
+        getter x, y, history
 
         def initialize(@x : Number, @y : Number)
+            @history = [] of Array(Int32 | Int32)
         end
 
         def move_north
@@ -19,6 +20,10 @@ module Day_02
 
         def move_east
             @y += 1
+        end
+
+        def snapshot
+            @history << [@x, @y]
         end
     end
 end

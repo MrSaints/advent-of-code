@@ -51,10 +51,10 @@ describe "Day_02" do
                 gps = Day_02::GPS.new +0, +0
                 gps.snapshot
                 gps.history.should eq [[+0, +0]]
+                gps.move_south
                 gps.move_east
-                gps.move_west
                 gps.snapshot
-                gps.history.should.eq [[+0, +0], [+1, +1]]
+                gps.history.should eq [[+0, +0], [-1, +1]]
             end
         end
     end
