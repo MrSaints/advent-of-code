@@ -57,5 +57,21 @@ describe "Day_02" do
                 gps.history.should eq [[+0, +0], [-1, +1]]
             end
         end
+
+        describe "unique_coordinates" do
+            it "should return a unique array of coordinates from the history (deduplicated)" do
+                gps = Day_02::GPS.new +0, +0
+                gps.snapshot
+                gps.move_south
+                gps.snapshot
+                gps.move_north
+                gps.snapshot
+                gps.move_east
+                gps.snapshot
+                gps.move_west
+                gps.snapshot
+                gps.unique_coordinates.should eq [[+0, +0], [-1, +0], [+0, +1]]
+            end
+        end
     end
 end
