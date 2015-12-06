@@ -43,13 +43,50 @@ describe "Paper" do
     end
 
     describe "total" do
-        it "should correctly return the total square feet of paper needed for 2x3x4" do
+        it "should correctly calculate the total square feet of paper needed for 2x3x4" do
             paper = Paper.new +2, +3, +4
             paper.total.should eq +58
         end
 
-        it "should correctly return the total square feet of paper needed for 1x1x10" do
-            paper = Paper.new +1, +1, +43
+        it "should correctly calculate the total square feet of paper needed for 1x1x10" do
+            paper = Paper.new +1, +1, +10
+            paper.total.should eq +43
+        end
+    end
+
+    describe "cubic" do
+        it "should correctly calculate the cubic feet of volume for 2x3x4" do
+            paper = Paper.new +2, +3, +4
+            paper.cubic.should eq +24
+        end
+
+        it "should correctly calculate the cubic feet of volume for 1x1x10" do
+            paper = Paper.new +1, +1, +10
+            paper.cubic.should eq +10
+        end
+    end
+
+    describe "smallest_perimeter" do
+        it "should correctly calculate the shortest distance for 2x3x4" do
+            paper = Paper.new +2, +3, +4
+            paper.smallest_perimeter.should eq +10
+        end
+
+        it "should correctly calculate the shortest distance for 1x1x10" do
+            paper = Paper.new +1, +1, +10
+            paper.smallest_perimeter.should eq +4
+        end
+    end
+
+    describe "ribbon" do
+        it "should correctly calculate the length of ribbon required for a 2x3x4 present" do
+            paper = Paper.new +2, +3, +4
+            paper.ribbon.should eq +34
+        end
+
+        it "should correctly calculate the length of ribbon required for a 1x1x10 present" do
+            paper = Paper.new +1, +1, +10
+            paper.ribbon.should eq +14
         end
     end
 end
@@ -75,7 +112,7 @@ describe "Day_02" do
     end
 
     describe "paper_needed" do
-        it "should return the total square feet of paper needed for all presents" do
+        it "should calculate the total square feet of paper needed for all presents" do
             day_02 = Day_02.new "2x3x4\n1x1x10"
             day_02.paper_needed.should eq +101
         end
@@ -86,6 +123,12 @@ describe "Day_02" do
             presents = File.read("./data/day_02.txt")
             day_02 = Day_02.new presents
             day_02.paper_needed.should eq +1606483
+        end
+
+        it "part 02 should be +3842356" do
+            presents = File.read("./data/day_02.txt")
+            day_02 = Day_02.new presents
+            day_02.ribbon_needed.should eq +3842356
         end
     end
 end

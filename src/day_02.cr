@@ -16,6 +16,19 @@ struct Paper
     def total : Number
         surface_area.sum + smallest_side
     end
+
+    def cubic : Number
+        l * w * h
+    end
+
+    def smallest_perimeter : Number
+        p1, p2, p3 = [l, w, h].sort
+        (p1 * 2) + (p2 * 2)
+    end
+
+    def ribbon : Number
+        cubic + smallest_perimeter
+    end
 end
 
 class Day_02
@@ -37,6 +50,14 @@ class Day_02
             l, w, h = present
             paper = Paper.new l, w, h
             paper.total
+        end
+    end
+
+    def ribbon_needed : Number
+        @presents.sum do |present|
+            l, w, h = present
+            paper = Paper.new l, w, h
+            paper.ribbon
         end
     end
 end
