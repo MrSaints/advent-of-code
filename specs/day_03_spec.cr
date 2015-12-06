@@ -84,10 +84,22 @@ describe "Day_03" do
         end
 
         describe "deliver" do
-            it "should deliver presents to +2 houses" do
+            it "should deliver presents to only +2 houses" do
                 santa = Day_03::Santa.new ">"
                 santa.deliver
-                santa.delivered.should eq +2
+                santa.houses.should eq +2
+            end
+
+            it "should deliver presents to only +4 houses" do
+                santa = Day_03::Santa.new "^>v<"
+                santa.deliver
+                santa.houses.should eq +4
+            end
+
+            it "should deliver presents to only +2 houses" do
+                santa = Day_03::Santa.new "^v^v^v^v^v"
+                santa.deliver
+                santa.houses.should eq +2
             end
         end
     end

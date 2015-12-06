@@ -7,19 +7,19 @@ module Day_03
         end
 
         def move_north
-            @x += 1
+            @x += +1
         end
 
         def move_south
-            @x -= 1
+            @x -= +1
         end
 
         def move_west
-            @y -= 1
+            @y -= +1
         end
 
         def move_east
-            @y += 1
+            @y += +1
         end
 
         def snapshot
@@ -41,6 +41,7 @@ module Day_03
 
         def deliver
             index = +0
+            @gps.snapshot
             while index < @instructions.size
                 case instructions[index]
                 when '^'
@@ -57,8 +58,8 @@ module Day_03
             end
         end
 
-        def delivered : Number
-            @gps.unique_coordinates.size + 1
+        def houses : Number
+            @gps.unique_coordinates.size
         end
     end
 end
