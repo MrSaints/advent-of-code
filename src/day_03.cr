@@ -36,6 +36,29 @@ module Day_03
 
         def initialize (instructions : String)
             @instructions = instructions.chars
+            @gps = GPS.new +0, +0
+        end
+
+        def deliver
+            index = +0
+            while index < @instructions.size
+                case instructions[index]
+                when '^'
+                    @gps.move_north
+                when 'v'
+                    @gps.move_south
+                when '<'
+                    @gps.move_west
+                when '>'
+                    @gps.move_east
+                end
+                @gps.snapshot
+                index += +1
+            end
+        end
+
+        def delivered : Number
+            @gps.unique_coordinates.size + 1
         end
     end
 end
