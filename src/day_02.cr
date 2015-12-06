@@ -17,6 +17,10 @@ class Day_02
     end
 
     def process(presents : String) : Number
-        0
+        total = 0
+        presents.each_line do |present|
+          total += paper_needed present
+        end
+        total
     end
 end
