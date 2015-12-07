@@ -68,8 +68,8 @@ describe "Day_05" do
                 nice = Day_05::NaughtyOrNice.new
                 nice.is_nice("ugknbfddgicrmopn").should be_true
 
-                nice_2 = Day_05::NaughtyOrNice.new "aaa"
-                nice_2.is_nice.should be_true
+                nice_2 = Day_05::NaughtyOrNice.new
+                nice_2.is_nice("aaa").should be_true
             end
 
             it "should be naughty" do

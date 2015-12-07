@@ -37,7 +37,7 @@ module Day_05
             success
         end
 
-        def does_not_match(s : String, ignore = ["ab", "cd", "pq", "xy"] of Array(String)) : Bool
+        def does_not_match(s : String, ignore = ["ab", "cd", "pq", "xy"] : Array(String)) : Bool
             !(create_regexp(ignore) =~ s)
         end
 
@@ -46,8 +46,11 @@ module Day_05
             Regex.new(matches, Regex::Options::IGNORE_CASE)
         end
 
-        def is_nice : Bool
-            
+        def is_nice(s : String) : Bool
+            if has_vowels(s) && has_consecutive_letter(s) && does_not_match(s)
+                return true
+            end
+            false
         end
     end
 end
