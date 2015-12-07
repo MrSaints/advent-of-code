@@ -82,6 +82,11 @@ describe "Day_03" do
                 santa.instructions.should eq ['^','v','^','v','^','v','^','v','^','v']
             end
 
+            it "should enumerate every odd instruction" do
+                santa = Day_03::Santa.new "^v^v^v^v^v", +1
+                santa.instructions.should eq ['^','^','^','^','^']
+            end
+
             it "should enumerate every other (even) instruction" do
                 santa = Day_03::Santa.new "^v^v^v^v^v", +2
                 santa.instructions.should eq ['v','v','v','v','v']
@@ -107,14 +112,58 @@ describe "Day_03" do
                 santa.houses.should eq +2
             end
         end
+
+        describe "deliver with Robo Santa" do
+            it "should deliver presents to only +3 houses with ^v" do
+                instructions = "^v"
+                santa = Day_03::Santa.new instructions, +1
+                santa.deliver
+                santa.houses.should eq +2
+
+                robo_santa = Day_03::Santa.new instructions, +2
+                robo_santa.deliver
+                robo_santa.houses.should eq +2
+
+                total = santa.houses + robo_santa.houses - +1
+                total.should eq +3
+            end
+
+            it "should deliver presents to only +3 houses with ^>v<" do
+                instructions = "^>v<"
+                santa = Day_03::Santa.new instructions, +1
+                santa.deliver
+                santa.houses.should eq +2
+
+                robo_santa = Day_03::Santa.new instructions, +2
+                robo_santa.deliver
+                robo_santa.houses.should eq +2
+
+                total = santa.houses + robo_santa.houses - +1
+                total.should eq +3
+            end
+
+            it "should deliver presents to only +11 houses with ^v^v^v^v^v" do
+                instructions = "^v^v^v^v^v"
+                santa = Day_03::Santa.new instructions, +1
+                santa.deliver
+                santa.houses.should eq +6
+
+                robo_santa = Day_03::Santa.new instructions, +2
+                robo_santa.deliver
+                robo_santa.houses.should eq +6
+
+                total = santa.houses + robo_santa.houses - +1
+                total.should eq +11
+            end
+        end
     end
 
     describe "answer" do
         it "part 01 should be +2572" do
             instructions = File.read("./data/day_03.txt")
-            day_03 = Day_03::Santa.new instructions
-            day_03.deliver
-            day_03.houses.should eq +2572
+            santa = Day_03::Santa.new instructions
+            santa.deliver
+            santa.houses.should eq +2572
         end
     end
 end

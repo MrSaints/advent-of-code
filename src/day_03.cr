@@ -34,13 +34,17 @@ module Day_03
     class Santa
         getter instructions
 
-        def initialize(instructions : String, ignore = +1 : Number)
+        def initialize(instructions : String, ignore = +0 : Number)
             @instructions = instructions.chars
-            if ignore != +1
+            if ignore != +0
                 index = +0
                 @instructions = @instructions.select do |i|
                     index += +1
-                    index % 2 == +0
+                    if ignore == +1
+                        index % +2 == +1
+                    else
+                        index % ignore == +0
+                    end
                 end
             end
 
