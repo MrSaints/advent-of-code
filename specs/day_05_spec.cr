@@ -12,13 +12,29 @@ describe "Day_05" do
         describe "initialize" do
         end
 
-        describe "has_vowels" do
+        describe "has_vowels" do # 1
+            it "should contain at least +3 vowels" do
+                non = Day_05::NaughtyOrNice.new
+                non.has_vowels("aei", 3).should be_true
+                non.has_vowels("xazegov", 3).should be_true
+                non.has_vowels("aeiouaeiouaeiou", 3).should be_true
+            end
         end
 
-        describe "has_consecutive_letter"
+        describe "has_consecutive_letter" do # 2
+            it "should contain at least +1 letter that appears twice in a row" do
+                non = Day_05::NaughtyOrNice.new
+                non.has_consecutive_letter("xx", 2).should be_true
+                non.has_consecutive_letter("abcdde", 2).should be_true
+                non.has_consecutive_letter("aabbccdd", 2).should be_true
+            end
         end
 
-        describe "does_not_contain"
+        describe "does_not_match" do # 3
+            it "should not contain ab, cd, pq, or xy" do
+                non = Day_05::NaughtyOrNice.new
+                non.does_not_match("acpx", ["ab", "cd", "pq", "xy"]).should be_true
+            end
         end
 
         describe "is_nice"
