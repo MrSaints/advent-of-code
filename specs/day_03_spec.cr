@@ -94,19 +94,19 @@ describe "Day_03" do
         end
 
         describe "deliver" do
-            it "should deliver presents to only +2 houses" do
+            it "should deliver presents to only +2 houses with >" do
                 santa = Day_03::Santa.new ">"
                 santa.deliver
                 santa.houses.should eq +2
             end
 
-            it "should deliver presents to only +4 houses" do
+            it "should deliver presents to only +4 houses with ^>v<" do
                 santa = Day_03::Santa.new "^>v<"
                 santa.deliver
                 santa.houses.should eq +4
             end
 
-            it "should deliver presents to only +2 houses" do
+            it "should deliver presents to only +2 houses with ^v^v^v^v^v" do
                 santa = Day_03::Santa.new "^v^v^v^v^v"
                 santa.deliver
                 santa.houses.should eq +2
@@ -114,7 +114,7 @@ describe "Day_03" do
         end
 
         describe "deliver with Robo Santa" do
-            it "should deliver presents to only +3 houses with ^v" do
+            it "should deliver presents to only +3 unique houses with ^v" do
                 instructions = "^v"
                 santa = Day_03::Santa.new instructions, +1
                 santa.deliver
@@ -124,8 +124,8 @@ describe "Day_03" do
                 robo_santa.deliver
                 robo_santa.houses.should eq +2
 
-                total = santa.houses + robo_santa.houses - +1
-                total.should eq +3
+                visits = santa.gps.unique_coordinates + robo_santa.gps.unique_coordinates
+                visits.uniq.size.should eq +3
             end
 
             it "should deliver presents to only +3 houses with ^>v<" do
@@ -138,8 +138,8 @@ describe "Day_03" do
                 robo_santa.deliver
                 robo_santa.houses.should eq +2
 
-                total = santa.houses + robo_santa.houses - +1
-                total.should eq +3
+                visits = santa.gps.unique_coordinates + robo_santa.gps.unique_coordinates
+                visits.uniq.size.should eq +3
             end
 
             it "should deliver presents to only +11 houses with ^v^v^v^v^v" do
@@ -152,8 +152,8 @@ describe "Day_03" do
                 robo_santa.deliver
                 robo_santa.houses.should eq +6
 
-                total = santa.houses + robo_santa.houses - +1
-                total.should eq +11
+                visits = santa.gps.unique_coordinates + robo_santa.gps.unique_coordinates
+                visits.uniq.size.should eq +11
             end
         end
     end
@@ -164,6 +164,20 @@ describe "Day_03" do
             santa = Day_03::Santa.new instructions
             santa.deliver
             santa.houses.should eq +2572
+        end
+
+        it "part 02 should be +2631" do
+            instructions = File.read("./data/day_03.txt")
+            santa = Day_03::Santa.new instructions, +1
+            santa.deliver
+            santa.houses.should eq +1493
+
+            robo_santa = Day_03::Santa.new instructions, +2
+            robo_santa.deliver
+            robo_santa.houses.should eq +1291
+
+            visits = santa.gps.unique_coordinates + robo_santa.gps.unique_coordinates
+            visits.uniq.size.should eq +2631
         end
     end
 end
