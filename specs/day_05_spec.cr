@@ -10,6 +10,10 @@ require "../src/day_05"
 describe "Day_05" do
     describe "NaughtyOrNice" do
         describe "initialize" do
+            it "should enumerate a line-separated list of naughty, and nice strings" do
+                non = Day_05::NaughtyOrNice.new "abcdef\nghijkl"
+                non.strings.should eq ["abcdef\n", "ghijkl"]
+            end
         end
 
         describe "has_vowels" do # 1
@@ -82,6 +86,22 @@ describe "Day_05" do
                 naughty_2 = Day_05::NaughtyOrNice.new
                 naughty_2.is_nice("dvszwmarrgswjxmb").should be_false
             end
+        end
+
+        describe "total_nice" do
+            it "should have +2 out of +4 nice strings" do
+                mock = "ugknbfddgicrmopn\naaa\nhaegwjzuvuyypxyu\ndvszwmarrgswjxmb"
+                non = Day_05::NaughtyOrNice.new mock
+                non.total_nice.should eq +2
+            end
+        end
+    end
+
+    describe "answers" do
+        it "part 01 should be +255" do
+            strings = File.read("./data/day_05.txt")
+            non = Day_05::NaughtyOrNice.new strings
+            non.total_nice.should eq +255
         end
     end
 end

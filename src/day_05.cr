@@ -1,8 +1,13 @@
 module Day_05
     class NaughtyOrNice
-        @vowels = ['a', 'e', 'i', 'o', 'u'] as Array(Char)
+        getter strings
 
-        def initialize
+        @vowels = ['a', 'e', 'i', 'o', 'u'] as Array(Char)
+        @ignore = ["ab", "cd", "pq", "xy"] as Array(String)
+
+        def initialize(strings = "" : String)
+            @strings = [] of String
+            @strings = strings.lines
         end
 
         def has_vowels(s : String, requirement = +3 : Number) : Bool
@@ -37,7 +42,7 @@ module Day_05
             success
         end
 
-        def does_not_match(s : String, ignore = ["ab", "cd", "pq", "xy"] : Array(String)) : Bool
+        def does_not_match(s : String, ignore = @ignore : Array(String)) : Bool
             !(create_regexp(ignore) =~ s)
         end
 
@@ -51,6 +56,16 @@ module Day_05
                 return true
             end
             false
+        end
+
+        def total_nice : Number
+            @strings.sum do |s|
+                if is_nice(s)
+                    +1
+                else
+                    +0
+                end
+            end
         end
     end
 end

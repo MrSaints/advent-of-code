@@ -1,7 +1,7 @@
 require "spec"
 require "../src/day_02"
 
-# Given a line separated list of lxwxh dimensions
+# Given a line-separated list of lxwxh dimensions
 # How many total square feet of wrapping paper is needed?
 
 describe "Paper" do
@@ -98,7 +98,7 @@ describe "Day_02" do
             day_02.presents.should eq [[+2, +3, +4]]
         end
 
-        it "should normalize a line separated list of lxwxh presents" do
+        it "should normalize a line-separated list of lxwxh presents" do
             day_02 = Day_02.new "2x3x4\n1x1x10"
             day_02.presents.should eq [[+2, +3, +4], [+1, +1, +10]]
         end
