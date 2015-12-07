@@ -2,14 +2,14 @@ require "crypto/md5"
 
 module Day_04
     class AdventCoin
-        getter iteration
+        getter iteration, secret, zeroes
 
-        def initialize(@secret = "" : String)
+        def initialize(@secret = "" : String, @zeroes = +5 : Number)
             @iteration = +0
         end
 
         def is_valid(hash : String) : Bool
-            if hash.size < +5 || hash[+0..+4] != "00000"
+            if hash.size < @zeroes || hash[+0..@zeroes-+1] != "0"*@zeroes
                 return false
             end
             true

@@ -7,6 +7,18 @@ require "../src/day_04"
 
 describe "Day_04" do
     describe "AdventCoin" do
+        describe "initialize" do
+            it "should set the secret to abcdef" do
+                ac = Day_04::AdventCoin.new "abcdef"
+                ac.secret.should eq "abcdef"
+            end
+
+            it "should set the number of zeroes required to +6" do
+                ac = Day_04::AdventCoin.new "", +6
+                ac.zeroes.should eq +6
+            end
+        end
+
         describe "is_valid" do
             it "should return false for a hash of aa7c9c12fc740955ef4dfad670250ff4" do
                 ac = Day_04::AdventCoin.new
@@ -21,6 +33,23 @@ describe "Day_04" do
             it "should return true for a hash of 000001dbbfa3a5c83a2d506429c7b00e" do
                 ac = Day_04::AdventCoin.new
                 ac.is_valid("000001dbbfa3a5c83a2d506429c7b00e").should be_true
+            end
+        end
+
+        describe "is_valid with 6 zeroes" do
+            it "should return false for a hash of aa7c9c12fc740955ef4dfad670250ff4" do
+                ac = Day_04::AdventCoin.new
+                ac.is_valid("aa7c9c12fc740955ef4dfad670250ff4").should be_false
+            end
+
+            it "should return false for a hash of 000001dbbfa3a5c83a2d506429c7b00e" do
+                ac = Day_04::AdventCoin.new "", +6
+                ac.is_valid("000001dbbfa3a5c83a2d506429c7b00e").should be_false
+            end
+
+            it "should return true for a hash of 000000dbbfa3a5c83a2d506429c7b00e" do
+                ac = Day_04::AdventCoin.new "", +6
+                ac.is_valid("000000dbbfa3a5c83a2d506429c7b00e").should be_true
             end
         end
 
@@ -63,6 +92,12 @@ describe "Day_04" do
             ac = ac = Day_04::AdventCoin.new "ckczppom"
             ac.mine
             ac.iteration.should eq +117946
+        end
+
+        it "part 02 should be +3938038" do
+            ac = ac = Day_04::AdventCoin.new "ckczppom", +6
+            ac.mine
+            ac.iteration.should eq +3938038
         end
     end
 end
