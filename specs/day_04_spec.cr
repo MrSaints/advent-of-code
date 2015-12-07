@@ -1,0 +1,39 @@
+require "spec"
+require "../src/day_04"
+
+# Given a secret key
+# Find the lowest number that combines with it (key + number)
+# to produce an MD5 hash that starts with 5 zeros (00000...).
+
+describe "Day_04" do
+    describe "AdventCoin" do
+        describe "is_valid" do
+            it "should return false for a hash of aa7c9c12fc740955ef4dfad670250ff4" do
+                ac = Day_04::AdventCoin.new
+                ac.is_valid("aa7c9c12fc740955ef4dfad670250ff4").should be_false
+            end
+
+            it "should return false for a hash of 000011dbbfa3a5c83a2d506429c7b00e" do
+                ac = Day_04::AdventCoin.new
+                ac.is_valid("000011dbbfa3a5c83a2d506429c7b00e").should be_false
+            end
+
+            it "should return true for a hash of 000001dbbfa3a5c83a2d506429c7b00e" do
+                ac = Day_04::AdventCoin.new
+                ac.is_valid("000001dbbfa3a5c83a2d506429c7b00e").should be_true
+            end
+        end
+
+        describe "mine" do
+            it "should return a hash of 000001dbbfa3a5c83a2d506429c7b00e using a key of abcdef" do
+                ac = Day_04::AdventCoin.new "abcdef"
+                ac.mine.should eq "000001dbbfa3a5c83a2d506429c7b00e"
+            end
+
+            it "should return a hash of 000006136ef2ff3b291c85725f17325c using a key of pqrstuv" do
+                ac = Day_04::AdventCoin.new "pqrstuv"
+                ac.mine.should eq "000006136ef2ff3b291c85725f17325c"
+            end
+        end
+    end
+end
