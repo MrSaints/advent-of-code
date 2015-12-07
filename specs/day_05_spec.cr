@@ -13,6 +13,13 @@ describe "Day_05" do
         end
 
         describe "has_vowels" do # 1
+            it "should contain at least +1 vowels" do
+                non = Day_05::NaughtyOrNice.new
+                non.has_vowels("azxc", +1).should be_true
+                non.has_vowels("cvmnmlo", +1).should be_true
+                non.has_vowels("qwrtpdfghajkcvbn", +1).should be_true
+            end
+
             it "should contain at least +3 vowels" do
                 non = Day_05::NaughtyOrNice.new
                 non.has_vowels("aei", +3).should be_true
