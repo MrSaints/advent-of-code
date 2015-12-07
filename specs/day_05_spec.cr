@@ -52,6 +52,11 @@ describe "Day_05" do
         end
 
         describe "does_not_match" do # 3
+            it "should contain xy" do
+                non = Day_05::NaughtyOrNice.new
+                non.does_not_match("xyzklab", ["xy"]).should be_false
+            end
+
             it "should not contain ab, cd, pq, or xy" do
                 non = Day_05::NaughtyOrNice.new
                 non.does_not_match("acpx", ["ab", "cd", "pq", "xy"]).should be_true
@@ -59,6 +64,24 @@ describe "Day_05" do
         end
 
         describe "is_nice" do
+            it "should be nice" do
+                nice = Day_05::NaughtyOrNice.new
+                nice.is_nice("ugknbfddgicrmopn").should be_true
+
+                nice_2 = Day_05::NaughtyOrNice.new "aaa"
+                nice_2.is_nice.should be_true
+            end
+
+            it "should be naughty" do
+                naughty = Day_05::NaughtyOrNice.new
+                naughty.is_nice("jchzalrnumimnmhp").should be_false
+
+                naughty_2 = Day_05::NaughtyOrNice.new
+                naughty_2.is_nice("haegwjzuvuyypxyu").should be_false
+
+                naughty_2 = Day_05::NaughtyOrNice.new
+                naughty_2.is_nice("dvszwmarrgswjxmb").should be_false
+            end
         end
     end
 end

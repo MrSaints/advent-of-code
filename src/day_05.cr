@@ -37,6 +37,17 @@ module Day_05
             success
         end
 
-        
+        def does_not_match(s : String, ignore = ["ab", "cd", "pq", "xy"] of Array(String)) : Bool
+            !(create_regexp(ignore) =~ s)
+        end
+
+        def create_regexp(ignore = [] of Array(String)) : Regex
+            matches = ignore.join("|")
+            Regex.new(matches, Regex::Options::IGNORE_CASE)
+        end
+
+        def is_nice : Bool
+            
+        end
     end
 end
