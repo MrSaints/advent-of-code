@@ -24,6 +24,13 @@ describe "Day_04" do
             end
         end
 
+        describe "generate" do
+            it "should generate a hash of 5f8b62a2dced0cd28946a9c891ff3e5e" do
+                ac = Day_04::AdventCoin.new "abcdef"
+                ac.generate(+1).should eq "5f8b62a2dced0cd28946a9c891ff3e5e"
+            end
+        end
+
         describe "mine" do
             it "should return a hash of 000001dbbfa3a5c83a2d506429c7b00e using a key of abcdef" do
                 ac = Day_04::AdventCoin.new "abcdef"
@@ -34,6 +41,26 @@ describe "Day_04" do
                 ac = Day_04::AdventCoin.new "pqrstuv"
                 ac.mine.should eq "000006136ef2ff3b291c85725f17325c"
             end
+        end
+
+        describe "iteration" do
+            it "should return an iteration of +609043 to generate a valid AdventCoin using abcdef" do
+                ac = Day_04::AdventCoin.new "abcdef"
+                ac.mine
+                ac.iteration.should eq +609043
+            end
+
+            it "should return an iteration of +1048970 to generate a valid AdventCoin using pqrstuv" do
+                ac = Day_04::AdventCoin.new "pqrstuv"
+                ac.mine
+                ac.iteration.should eq +1048970
+            end
+        end
+    end
+
+    describe "answers" do
+        it "part 01 should be +X" do
+            
         end
     end
 end
