@@ -59,8 +59,10 @@ describe "Day_04" do
     end
 
     describe "answers" do
-        it "part 01 should be +X" do
-            
+        it "part 01 should be +117946" do
+            ac = ac = Day_04::AdventCoin.new "ckczppom"
+            ac.mine
+            ac.iteration.should eq +117946
         end
     end
 end
