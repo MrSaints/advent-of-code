@@ -158,7 +158,7 @@ describe "Day_03" do
         end
     end
 
-    describe "answer" do
+    describe "answers" do
         it "part 01 should be +2572" do
             instructions = File.read("./data/day_03.txt")
             santa = Day_03::Santa.new instructions
