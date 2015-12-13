@@ -67,6 +67,14 @@ describe "Day_05" do
             end
         end
 
+        describe "create_letter_pairs" do
+            it "should return an array (size n - 1) of letter pairs from a string" do
+                non = Day_05::NaughtyOrNice.new
+                non.create_letter_pairs("qwe").should eq ["qw", "we"]
+                non.create_letter_pairs("abcdefg").should eq ["ab", "bc", "cd", "de", "ef", "fg"]
+            end
+        end
+
         describe "has_matching_pair" do
             it "should contain +2 or more matching pairs of letters" do
                 non = Day_05::NaughtyOrNice.new

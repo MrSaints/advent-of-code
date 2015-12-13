@@ -1,3 +1,13 @@
+# This challenge can be accomplished using backreferences.
+# Nevertheless, I'm against using it as it's not _real regexp_.
+# Furthermore, there's no efficient implementation of it, and
+# it's more challenging to implement a non-regexp solution.
+#
+# "Patterns with backreferences are not regular expressions,
+# contrary to popular terminology. All regular expressions
+# (in the actual definition of the word) describe patterns
+# that can be matched in a single linear-time pass over the
+# input text. This is what package regexp implements."
 module Day_05
     class NaughtyOrNice
         getter strings
@@ -49,6 +59,30 @@ module Day_05
         def create_regexp(ignore = [] of Array(String)) : Regex
             matches = ignore.join("|")
             Regex.new(matches, Regex::Options::IGNORE_CASE)
+        end
+
+        def create_letter_pairs(s : String)
+            index = 0
+            s_length = s.size
+            pairs = [] of String
+            while index < s_length - +1
+                total_pairs = pairs.size
+
+                index += +1
+                pair = s[index - +1].to_s + s[index].to_s
+
+                if total_pairs != +0 && pairs[total_pairs - +1] == pair
+                    next
+                end
+
+                pairs << pair
+            end
+            pairs
+        end
+
+        def has_matching_pair(s : String) : Bool
+            pairs = create_letter_pairs s
+            pairs.uniq.size < pairs.size
         end
 
         def is_nice(s : String) : Bool
