@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/MrSaints/advent-of-code">
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../js/doc.js"></script>
+  <title>Day_05::NaughtyOrNice - github.com/MrSaints/advent-of-code</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="../index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class=" " data-id="github.com/MrSaints/advent-of-code/Day_01" data-name="day_01">
+      <a href="../Day_01.html">Day_01</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/MrSaints/advent-of-code/Day_02" data-name="day_02">
+      <a href="../Day_02.html">Day_02</a>
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/MrSaints/advent-of-code/Day_03" data-name="day_03">
+      <a href="../Day_03.html">Day_03</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/MrSaints/advent-of-code/Day_03/GPS" data-name="day_03::gps">
+      <a href="../Day_03/GPS.html">GPS</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/MrSaints/advent-of-code/Day_03/Santa" data-name="day_03::santa">
+      <a href="../Day_03/Santa.html">Santa</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/MrSaints/advent-of-code/Day_04" data-name="day_04">
+      <a href="../Day_04.html">Day_04</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/MrSaints/advent-of-code/Day_04/AdventCoin" data-name="day_04::adventcoin">
+      <a href="../Day_04/AdventCoin.html">AdventCoin</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent open current" data-id="github.com/MrSaints/advent-of-code/Day_05" data-name="day_05">
+      <a href="../Day_05.html">Day_05</a>
+      
+        <ul>
+  
+  <li class=" current" data-id="github.com/MrSaints/advent-of-code/Day_05/NaughtyOrNice" data-name="day_05::naughtyornice">
+      <a href="../Day_05/NaughtyOrNice.html">NaughtyOrNice</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/MrSaints/advent-of-code/Day_06" data-name="day_06">
+      <a href="../Day_06.html">Day_06</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/MrSaints/advent-of-code/Day_06/Brightness" data-name="day_06::brightness">
+      <a href="../Day_06/Brightness.html">Brightness</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/MrSaints/advent-of-code/Day_06/Instructions" data-name="day_06::instructions">
+      <a href="../Day_06/Instructions.html">Instructions</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/MrSaints/advent-of-code/Day_06/Switch" data-name="day_06::switch">
+      <a href="../Day_06/Switch.html">Switch</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/MrSaints/advent-of-code/Paper" data-name="paper">
+      <a href="../Paper.html">Paper</a>
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Day_05::NaughtyOrNice
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Day_05/NaughtyOrNice.html">Day_05::NaughtyOrNice</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/MrSaints/advent-of-code/blob/40bdd26da0407631965dceb77bbbcb101b3a8a57/src/day_05.cr" target="_blank">day_05.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28strings%3D%3Cspanclass%3D%22s%22%3E%26quot%3B%26quot%3B%3C%2Fspan%3E%3AString%29-class-method" class="signature"><strong>.new</strong>(strings = <span class="s">&quot;&quot;</span> : String)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#create_letter_pairs%28s%3AString%29-instance-method" class="signature"><strong>#create_letter_pairs</strong>(s : String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#create_regexp%28ignore%3D%3Cspanclass%3D%22o%22%3E%5B%5D%3C%2Fspan%3E%3Cspanclass%3D%22k%22%3Eof%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3EArray%3C%2Fspan%3E%28%3Cspanclass%3D%22t%22%3EString%3C%2Fspan%3E%29%29%3ARegex-instance-method" class="signature"><strong>#create_regexp</strong>(ignore = <span class="o">[]</span> <span class="k">of</span> <span class="t">Array</span>(<span class="t">String</span>)) : Regex</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#does_not_match%28s%3AString%2Cignore%3D%40ignore%3AArray%28String%29%29%3ABool-instance-method" class="signature"><strong>#does_not_match</strong>(s : String, ignore = @ignore : Array(String)) : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#has_consecutive_letter%28s%3AString%2Crequirement%3D%3Cspanclass%3D%22n%22%3E%2B2%3C%2Fspan%3E%3ANumber%29%3ABool-instance-method" class="signature"><strong>#has_consecutive_letter</strong>(s : String, requirement = <span class="n">+2</span> : Number) : Bool</a>
+        
+          <div class="summary"><p>TODO: Refactor</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#has_letter_between%28s%3AString%29%3ABool-instance-method" class="signature"><strong>#has_letter_between</strong>(s : String) : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#has_matching_pair%28s%3AString%29%3ABool-instance-method" class="signature"><strong>#has_matching_pair</strong>(s : String) : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#has_vowels%28s%3AString%2Crequirement%3D%3Cspanclass%3D%22n%22%3E%2B3%3C%2Fspan%3E%3ANumber%29%3ABool-instance-method" class="signature"><strong>#has_vowels</strong>(s : String, requirement = <span class="n">+3</span> : Number) : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#is_nice%28s%3AString%29%3ABool-instance-method" class="signature"><strong>#is_nice</strong>(s : String) : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#is_nice_2%28s%3AString%29%3ABool-instance-method" class="signature"><strong>#is_nice_2</strong>(s : String) : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#strings-instance-method" class="signature"><strong>#strings</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#total_nice%3ANumber-instance-method" class="signature"><strong>#total_nice</strong> : Number</a>
+        
+          <div class="summary"><p>TODO: Refactor (clean redundant code)</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#total_nice_2%3ANumber-instance-method" class="signature"><strong>#total_nice_2</strong> : Number</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="new(strings=&lt;spanclass=&quot;s&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt;:String)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(strings = <span class="s">&quot;&quot;</span> : String)
+
+        <a class="method-permalink" href="#new%28strings%3D%3Cspanclass%3D%22s%22%3E%26quot%3B%26quot%3B%3C%2Fspan%3E%3AString%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/MrSaints/advent-of-code/blob/40bdd26da0407631965dceb77bbbcb101b3a8a57/src/day_05.cr#L18" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="create_letter_pairs(s:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>create_letter_pairs</strong>(s : String)
+
+        <a class="method-permalink" href="#create_letter_pairs%28s%3AString%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/MrSaints/advent-of-code/blob/40bdd26da0407631965dceb77bbbcb101b3a8a57/src/day_05.cr#L64" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="create_regexp(ignore=&lt;spanclass=&quot;o&quot;&gt;[]&lt;/span&gt;&lt;spanclass=&quot;k&quot;&gt;of&lt;/span&gt;&lt;spanclass=&quot;t&quot;&gt;Array&lt;/span&gt;(&lt;spanclass=&quot;t&quot;&gt;String&lt;/span&gt;)):Regex-instance-method">
+      <div class="signature">
+        
+        def <strong>create_regexp</strong>(ignore = <span class="o">[]</span> <span class="k">of</span> <span class="t">Array</span>(<span class="t">String</span>)) : Regex
+
+        <a class="method-permalink" href="#create_regexp%28ignore%3D%3Cspanclass%3D%22o%22%3E%5B%5D%3C%2Fspan%3E%3Cspanclass%3D%22k%22%3Eof%3C%2Fspan%3E%3Cspanclass%3D%22t%22%3EArray%3C%2Fspan%3E%28%3Cspanclass%3D%22t%22%3EString%3C%2Fspan%3E%29%29%3ARegex-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/MrSaints/advent-of-code/blob/40bdd26da0407631965dceb77bbbcb101b3a8a57/src/day_05.cr#L59" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="does_not_match(s:String,ignore=@ignore:Array(String)):Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>does_not_match</strong>(s : String, ignore = @ignore : Array(String)) : Bool
+
+        <a class="method-permalink" href="#does_not_match%28s%3AString%2Cignore%3D%40ignore%3AArray%28String%29%29%3ABool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/MrSaints/advent-of-code/blob/40bdd26da0407631965dceb77bbbcb101b3a8a57/src/day_05.cr#L55" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="has_consecutive_letter(s:String,requirement=&lt;spanclass=&quot;n&quot;&gt;+2&lt;/span&gt;:Number):Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>has_consecutive_letter</strong>(s : String, requirement = <span class="n">+2</span> : Number) : Bool
+
+        <a class="method-permalink" href="#has_consecutive_letter%28s%3AString%2Crequirement%3D%3Cspanclass%3D%22n%22%3E%2B2%3C%2Fspan%3E%3ANumber%29%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>TODO: Refactor</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/MrSaints/advent-of-code/blob/40bdd26da0407631965dceb77bbbcb101b3a8a57/src/day_05.cr#L32" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="has_letter_between(s:String):Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>has_letter_between</strong>(s : String) : Bool
+
+        <a class="method-permalink" href="#has_letter_between%28s%3AString%29%3ABool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/MrSaints/advent-of-code/blob/40bdd26da0407631965dceb77bbbcb101b3a8a57/src/day_05.cr#L86" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="has_matching_pair(s:String):Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>has_matching_pair</strong>(s : String) : Bool
+
+        <a class="method-permalink" href="#has_matching_pair%28s%3AString%29%3ABool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/MrSaints/advent-of-code/blob/40bdd26da0407631965dceb77bbbcb101b3a8a57/src/day_05.cr#L81" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="has_vowels(s:String,requirement=&lt;spanclass=&quot;n&quot;&gt;+3&lt;/span&gt;:Number):Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>has_vowels</strong>(s : String, requirement = <span class="n">+3</span> : Number) : Bool
+
+        <a class="method-permalink" href="#has_vowels%28s%3AString%2Crequirement%3D%3Cspanclass%3D%22n%22%3E%2B3%3C%2Fspan%3E%3ANumber%29%3ABool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/MrSaints/advent-of-code/blob/40bdd26da0407631965dceb77bbbcb101b3a8a57/src/day_05.cr#L23" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="is_nice(s:String):Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>is_nice</strong>(s : String) : Bool
+
+        <a class="method-permalink" href="#is_nice%28s%3AString%29%3ABool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/MrSaints/advent-of-code/blob/40bdd26da0407631965dceb77bbbcb101b3a8a57/src/day_05.cr#L98" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="is_nice_2(s:String):Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>is_nice_2</strong>(s : String) : Bool
+
+        <a class="method-permalink" href="#is_nice_2%28s%3AString%29%3ABool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/MrSaints/advent-of-code/blob/40bdd26da0407631965dceb77bbbcb101b3a8a57/src/day_05.cr#L105" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="strings-instance-method">
+      <div class="signature">
+        
+        def <strong>strings</strong>
+
+        <a class="method-permalink" href="#strings-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/MrSaints/advent-of-code/blob/40bdd26da0407631965dceb77bbbcb101b3a8a57/src/day_05.cr#L13" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="total_nice:Number-instance-method">
+      <div class="signature">
+        
+        def <strong>total_nice</strong> : Number
+
+        <a class="method-permalink" href="#total_nice%3ANumber-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>TODO: Refactor (clean redundant code)</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/MrSaints/advent-of-code/blob/40bdd26da0407631965dceb77bbbcb101b3a8a57/src/day_05.cr#L113" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="total_nice_2:Number-instance-method">
+      <div class="signature">
+        
+        def <strong>total_nice_2</strong> : Number
+
+        <a class="method-permalink" href="#total_nice_2%3ANumber-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/MrSaints/advent-of-code/blob/40bdd26da0407631965dceb77bbbcb101b3a8a57/src/day_05.cr#L123" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>
