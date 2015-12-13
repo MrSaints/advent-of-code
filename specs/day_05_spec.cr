@@ -89,6 +89,24 @@ describe "Day_05" do
             end
         end
 
+        describe "has_letter_between" do
+            it "should contain at least +1 letter which repeats with exactly +1 letter between them" do
+                non = Day_05::NaughtyOrNice.new
+                non.has_letter_between("xyx").should be_true
+                non.has_letter_between("abcdefeghi").should be_true
+                non.has_letter_between("efe").should be_true
+                non.has_letter_between("aaa").should be_true
+            end
+
+            it "should contain no letter which repeats with exactly +1 letter between them" do
+                non = Day_05::NaughtyOrNice.new
+                non.has_letter_between("xya").should be_false
+                non.has_letter_between("abcdeffghi").should be_false
+                non.has_letter_between("efc").should be_false
+                non.has_letter_between("aaq").should be_false
+            end
+        end
+
         describe "is_nice" do
             it "should be nice" do
                 nice = Day_05::NaughtyOrNice.new

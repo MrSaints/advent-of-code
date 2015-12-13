@@ -85,6 +85,10 @@ module Day_05
             pairs.uniq.size < pairs.size
         end
 
+        def has_letter_between(s : String) : Bool
+            false
+        end
+
         def is_nice(s : String) : Bool
             if has_vowels(s) && has_consecutive_letter(s) && does_not_match(s)
                 return true
