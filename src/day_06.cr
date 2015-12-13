@@ -30,7 +30,31 @@ module Day_06
                 end
             end
         end
+    end
 
-        # (\D+)\s(\d+),(\d+)\sthrough\s(\d+),(\d+)
+    struct Instructions
+        getter operations
+
+        def initialize(s = "" : String)
+            @operations = [] of Hash(Symbol, String | Int32)
+            s.each_line do |op|
+                @operations << parse op
+            end
+        end
+
+        def parse(s : String) : Hash(Symbol, String | Int32)
+            re = /(\D+)\s(\d+),(\d+)\sthrough\s(\d+),(\d+)/
+            s.match re, do |match|
+                _, operation, x1, y1, x2, y2 = match
+                return {
+                    operation: operation,
+                    x1: x1.to_i,
+                    y1: y1.to_i,
+                    x2: x2.to_i,
+                    y2: y2.to_i
+                }
+            end
+            { operation: "invalid", x1: +0, y1: +0, x2: +0, y2: +0 }
+        end
     end
 end
