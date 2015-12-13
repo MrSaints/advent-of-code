@@ -1,5 +1,5 @@
 module Day_06
-    struct Lights
+    class Switch
         property grid
 
         def initialize(@x = +1 : Number, @y = +1 : Number, @default = false : Bool)
@@ -22,21 +22,54 @@ module Day_06
         def total_on : Number
             @grid.sum do |x|
                 x.sum do |y|
-                    if y
-                        +1
-                    else
-                        +0
-                    end
+                    yield y
+                end
+            end
+        end
+
+        def total_on : Number
+            total_on do |y|
+                if y
+                    +1
+                else
+                    +0
                 end
             end
         end
     end
 
-    struct Instructions
+    class Brightness
+        property grid
+
+        def initialize(@x = +1 : Number, @y = +1 : Number, @default = +0 : Number)
+            @grid = Array.new(@x) { Array.new(@y) { @default } }
+        end
+
+        def switch_on(x : Number, y : Number)
+            @grid[x][y] += +1
+        end
+
+        def switch_off(x : Number, y : Number)
+            if @grid[x][y] != +0
+                @grid[x][y] -= +1
+            end
+        end
+
+        def toggle(x : Number, y : Number)
+            @grid[x][y] += +2
+        end
+
+        def total_on : Number
+            @grid.sum { |x| x.sum }
+        end
+    end
+
+    class Instructions
         getter operations, lights
 
-        def initialize(s = "" : String)
-            @lights = Lights.new +1000, +1000
+        # TODO: Write 'interface' (a super class that would raise errors)
+        def initialize(s = "" : String, type = Switch.new(+1000, +1000) : Day_06::Switch | Day_06::Brightness)
+            @lights = type
             @operations = [] of Hash(Symbol, String | Int32)
             s.each_line do |op|
                 @operations << parse op
