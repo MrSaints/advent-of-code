@@ -66,16 +66,14 @@ module Day_05
             s_length = s.size
             pairs = [] of String
             while index < s_length - +1
-                total_pairs = pairs.size
+                pair = s[index].to_s + s[index + +1].to_s
 
-                index += +1
-                pair = s[index - +1].to_s + s[index].to_s
-
-                if total_pairs != +0 && pairs[total_pairs - +1] == pair
-                    next
+                if index != +0 && pairs[index - +1] == pair
+                    pair = ""
                 end
 
                 pairs << pair
+                index += +1
             end
             pairs
         end

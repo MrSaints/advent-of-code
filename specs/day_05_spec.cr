@@ -78,6 +78,7 @@ describe "Day_05" do
         describe "has_matching_pair" do
             it "should contain +2 or more matching pairs of letters" do
                 non = Day_05::NaughtyOrNice.new
+                non.has_matching_pair("xyxy").should be_true
                 non.has_matching_pair("aabcdefgaa").should be_true
                 non.has_matching_pair("uurcxstgmygtbstg").should be_true
             end
@@ -94,7 +95,6 @@ describe "Day_05" do
                 non = Day_05::NaughtyOrNice.new
                 non.has_letter_between("xyx").should be_true
                 non.has_letter_between("abcdefeghi").should be_true
-                non.has_letter_between("efe").should be_true
                 non.has_letter_between("aaa").should be_true
             end
 
@@ -133,6 +133,11 @@ describe "Day_05" do
                 nice = Day_05::NaughtyOrNice.new
                 nice.is_nice_2("qjhvhtzxzqqjkmpb").should be_true
                 nice.is_nice_2("xxyxx").should be_true
+
+                # Special
+                nice.is_nice_2("xilodxfuxphuiiii").should be_true
+                nice.is_nice_2("pzkkkkwrlvxiuysn").should be_true
+                nice.is_nice_2("bkkkkcwegvypbrio").should be_true
             end
 
             it "should be naughty (part 2)" do
@@ -164,6 +169,12 @@ describe "Day_05" do
             strings = File.read("./data/day_05.txt")
             non = Day_05::NaughtyOrNice.new strings
             non.total_nice.should eq +255
+        end
+
+        it "part 02 should be +55" do
+            strings = File.read("./data/day_05.txt")
+            non = Day_05::NaughtyOrNice.new strings
+            non.total_nice_2.should eq +55
         end
     end
 end
