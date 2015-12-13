@@ -97,5 +97,58 @@ describe "Day_06" do
                 instructions.parse("toggle 549,969 612,991").should eq expected
             end
         end
+
+        describe "run_operation" do
+            it "should correctly run a single +3x+3 light operation" do
+                instructions = Day_06::Instructions.new
+                mock = {
+                    operation: "turn on",
+                    x1: +0,
+                    y1: +0,
+                    x2: +2,
+                    y2: +2,
+                }
+                instructions.run_operation mock
+                instructions.lights.total_on.should eq +9
+            end
+
+            it "should correctly run a single +1000x+1000 light operation" do
+                instructions = Day_06::Instructions.new
+                mock = {
+                    operation: "turn on",
+                    x1: +0,
+                    y1: +0,
+                    x2: +999,
+                    y2: +999,
+                }
+                instructions.run_operation mock
+                instructions.lights.total_on.should eq +1000000
+            end
+        end
+
+        describe "run_all" do
+            it "should run a single parsed / instantiated operation" do
+                mock = "toggle 0,0 through 1,1"
+                instructions = Day_06::Instructions.new mock
+                instructions.run_all
+                instructions.lights.total_on.should eq +4
+            end
+
+            it "should run multiple parsed / instantiated operations" do
+                mock = "toggle 0,0 through 1,1\ntoggle 0,0 through 1,1"
+                instructions = Day_06::Instructions.new mock
+                instructions.run_all
+                instructions.lights.total_on.should eq +0
+            end
+        end
+    end
+
+    describe "answers" do
+        it "part 01 should be +569999" do
+            operations = File.read("./data/day_06.txt")
+            instructions = Day_06::Instructions.new operations
+            instructions.run_all
+            instructions.lights.total_on.should eq +569999
+        end
     end
 end

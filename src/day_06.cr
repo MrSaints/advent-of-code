@@ -19,7 +19,7 @@ module Day_06
             @grid[x][y] = !@grid[x][y]
         end
 
-        def total_on
+        def total_on : Number
             @grid.sum do |x|
                 x.sum do |y|
                     if y
@@ -33,9 +33,10 @@ module Day_06
     end
 
     struct Instructions
-        getter operations
+        getter operations, lights
 
         def initialize(s = "" : String)
+            @lights = Lights.new +1000, +1000
             @operations = [] of Hash(Symbol, String | Int32)
             s.each_line do |op|
                 @operations << parse op
@@ -55,6 +56,38 @@ module Day_06
                 }
             end
             { operation: "invalid", x1: +0, y1: +0, x2: +0, y2: +0 }
+        end
+
+        def run_operation(op : Hash(Symbol, String | Int32))
+            index_x = op[:x1].to_i
+            index_y = op[:y1].to_i
+            end_x = op[:x2].to_i + +1
+            end_y = op[:y2].to_i + +1
+            operation = op[:operation]
+
+            while index_x < end_x
+                while index_y < end_y
+                    case operation
+                    when "turn on"
+                        @lights.switch_on index_x, index_y
+                    when "turn off"
+                        @lights.switch_off index_x, index_y
+                    when "toggle"
+                        @lights.toggle index_x, index_y
+                    end
+
+                    index_y += +1
+                end
+
+                index_y = op[:y1].to_i
+                index_x += +1
+            end
+        end
+
+        def run_all
+            @operations.each do |op|
+                run_operation op
+            end
         end
     end
 end
