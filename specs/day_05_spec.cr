@@ -128,11 +128,33 @@ describe "Day_05" do
             end
         end
 
+        describe "is_nice_2" do
+            it "should be nice (part 2)" do
+                nice = Day_05::NaughtyOrNice.new
+                nice.is_nice_2("qjhvhtzxzqqjkmpb").should be_true
+                nice.is_nice_2("xxyxx").should be_true
+            end
+
+            it "should be naughty (part 2)" do
+                naughty = Day_05::NaughtyOrNice.new
+                naughty.is_nice_2("uurcxstgmygtbstg").should be_false
+                naughty.is_nice_2("ieodomkazucvgmuy").should be_false
+            end
+        end
+
         describe "total_nice" do
             it "should have +2 out of +4 nice strings" do
                 mock = "ugknbfddgicrmopn\naaa\nhaegwjzuvuyypxyu\ndvszwmarrgswjxmb"
                 non = Day_05::NaughtyOrNice.new mock
                 non.total_nice.should eq +2
+            end
+        end
+
+        describe "total_nice_2" do
+            it "should have +2 out of +4 nice strings" do
+                mock = "qjhvhtzxzqqjkmpb\nxxyxx\nuurcxstgmygtbstg\nieodomkazucvgmuy"
+                non = Day_05::NaughtyOrNice.new mock
+                non.total_nice_2.should eq +2
             end
         end
     end

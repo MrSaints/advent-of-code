@@ -62,7 +62,7 @@ module Day_05
         end
 
         def create_letter_pairs(s : String)
-            index = 0
+            index = +0
             s_length = s.size
             pairs = [] of String
             while index < s_length - +1
@@ -86,6 +86,14 @@ module Day_05
         end
 
         def has_letter_between(s : String) : Bool
+            index = +0
+            s_length = s.size
+            while index < s_length - +2
+                if s[index] == s[index + +2]
+                    return true
+                end
+                index += +1
+            end
             false
         end
 
@@ -96,9 +104,27 @@ module Day_05
             false
         end
 
+        def is_nice_2(s : String) : Bool
+            if has_matching_pair(s) && has_letter_between(s)
+                return true
+            end
+            false
+        end
+
+        # TODO: Refactor (clean redundant code)
         def total_nice : Number
             @strings.sum do |s|
                 if is_nice(s)
+                    +1
+                else
+                    +0
+                end
+            end
+        end
+
+        def total_nice_2 : Number
+            @strings.sum do |s|
+                if is_nice_2(s)
                     +1
                 else
                     +0
