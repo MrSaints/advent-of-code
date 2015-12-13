@@ -67,6 +67,20 @@ describe "Day_05" do
             end
         end
 
+        describe "has_matching_pair" do
+            it "should contain +2 or more matching pairs of letters" do
+                non = Day_05::NaughtyOrNice.new
+                non.has_matching_pair("aabcdefgaa").should be_true
+                non.has_matching_pair("uurcxstgmygtbstg").should be_true
+            end
+
+            it "should contain no matching pairs of letters" do
+                non = Day_05::NaughtyOrNice.new
+                non.has_matching_pair("aaab").should be_false
+                non.has_matching_pair("ieodomkazucvgmuy").should be_false
+            end
+        end
+
         describe "is_nice" do
             it "should be nice" do
                 nice = Day_05::NaughtyOrNice.new
